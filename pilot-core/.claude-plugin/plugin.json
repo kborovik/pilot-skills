@@ -1,0 +1,6 @@
+{
+  "name": "core",
+  "description": "PilotCore — shared encoder/protocol skills for cross-plugin reuse. Houses socratic (single-question intent gate) and steno (GitHub-facing text compression). Foundation for sdd and gh.",
+  "version": "1.0.1",
+  "author": { "name": "Konstantin Borovik", "email": "github@lab5.ca" }
+}

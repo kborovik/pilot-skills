@@ -1,0 +1,7 @@
+{
+  "name": "gh",
+  "description": "PilotPlan — GitHub workflow today (commit staged changes, create issues, open PRs, merge PRs, cut releases); evolving toward a high-level planning surface. Workflow-only; no code development.",
+  "version": "1.3.1",
+  "author": { "name": "Konstantin Borovik", "email": "github@lab5.ca" },
+  "dependencies": ["core"]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "pilot-skills",
+  "description": "Claude Code plugin skills repository — bundled plugins for spec-driven development and GitHub management",
+  "owner": { "name": "Konstantin Borovik", "email": "github@lab5.ca" },
+  "plugins": [
+    {
+      "name": "sdd",
+      "description": "PilotSpec — compressed spec-driven development. /sdd:spec, /sdd:build, /sdd:check, /sdd:explain over one SPEC.md. Math-glyph encoding (~75% token cut vs prose). Bug-to-spec backprop. Adapted from JuliusBrussee/cavekit.",
+      "source": "./pilot-spec",
+      "category": "development"
+    },
+    {
+      "name": "gh",
+      "description": "PilotPlan — GitHub workflow today (/gh:commit, /gh:issue, /gh:pr, /gh:merge, /gh:release); evolving toward a high-level planning surface. Steno-styled issue & PR text. No code development.",
+      "source": "./pilot-plan",
+      "category": "github"
+    },
+    {
+      "name": "core",
+      "description": "PilotCore — shared encoder/protocol skills (socratic, steno) for cross-plugin reuse. Required by sdd & gh.",
+      "source": "./pilot-core",
+      "category": "development"
+    }
+  ]
+}
