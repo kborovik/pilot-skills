@@ -79,7 +79,7 @@ V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B
 | T4  | .      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                            | V1,V23 |
 | T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
 | T6  | .      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
-| T7  | .      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
+| T7  | x      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
 | T8  | .      | sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`                         | V3,V27 |
 
 ## §B BUGS

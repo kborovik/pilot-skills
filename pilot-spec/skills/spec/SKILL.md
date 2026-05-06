@@ -83,6 +83,12 @@ Read that section. Show current. Ask user what changes. On user OK → write `SP
 
 Never silently rewrite sections user did not name.
 
+## POST-APPLY
+
+∀ mode (NEW ∨ DISTILL ∨ BACKPROP ∨ AMEND) post-commit ! auto-fire `/sdd:check --all` (cascade scan); surface drift report → user as part of this response. ⊥ silent commit-then-done.
+
+Catches the class where SPEC.md amend invalidates derivative content ∈ `<plugin>/**` (skills, commands, READMEs) without manual audit. Drift surfaces inline even if user later runs `/sdd:check` themselves — first-pass auto-scan ≡ baseline, ⊥ optional.
+
 ## OUTPUT RULES
 
 - Math-glyph format per `glyph` skill.
