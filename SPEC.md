@@ -67,6 +67,7 @@ V23: §V ∧ §T ∧ §B numbering monotonic — ⊥ reuse N across history.
 V24: SPEC.md > 500 lines → compact §B (drop oldest bugs) before splitting — one-file rule preserved.
 V25: glyph encoding preserves verbatim — code blocks, paths, URLs, identifiers, numbers, versions, error strings, SQL, regex, JSON, YAML, quoted strings.
 V26: `/sdd:spec` post-apply ! auto-fire `/sdd:check --all`; surface drift → user before further `/sdd:*` invocations. ⊥ silent commit-then-done.
+V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B.<n>`); pinned numerics (`§V.1`, `§T.3`, `§B.1`, …) ⊥ allowed even in pedagogical examples. convention already established in spec ∧ backprop skills.
 
 ## §T TASKS
 
@@ -79,9 +80,11 @@ V26: `/sdd:spec` post-apply ! auto-fire `/sdd:check --all`; surface drift → us
 | T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
 | T6  | .      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
 | T7  | .      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
+| T8  | .      | sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`                         | V3,V27 |
 
 ## §B BUGS
 
 | id  | date       | cause                                                                                                                 | fix |
 | --- | ---------- | --------------------------------------------------------------------------------------------------------------------- | --- |
 | B1  | 2026-05-06 | V0+V15 amend left `~` refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}; derivative ⊥ propagated | V26 |
+| B2  | 2026-05-06 | V3 violations: pinned numerics @ pilot-spec/{commands/explain,skills/{check,glyph},README}, pilot-core/skills/steno    | V27 |
