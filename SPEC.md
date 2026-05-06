@@ -68,6 +68,7 @@ V24: SPEC.md > 500 lines → compact §B (drop oldest bugs) before splitting —
 V25: glyph encoding preserves verbatim — code blocks, paths, URLs, identifiers, numbers, versions, error strings, SQL, regex, JSON, YAML, quoted strings.
 V26: `/sdd:spec` post-apply ! auto-fire `/sdd:check --all`; surface drift → user before further `/sdd:*` invocations. ⊥ silent commit-then-done.
 V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B.<n>`); pinned numerics (`§V.1`, `§T.3`, `§B.1`, …) ⊥ allowed even in pedagogical examples. convention already established in spec ∧ backprop skills.
+V28: ∀ pinned §-cite (`§V.N`, `§T.N`, `§B.N` ∨ bare `V.N`/`T.N`/`B.N`) ∈ `.claude/**` ∧ `CLAUDE.md` ! resolve to intended SPEC.md row; `/sdd:check` audits cite resolution (read-only per §V.17); `/sdd:spec` mutation inserting/reordering §V ∨ §T ∨ §B ! sweep citers as part of §V.26 post-apply — ⊥ rely solely on auto-`/sdd:check`.
 
 ## §T TASKS
 
@@ -82,6 +83,7 @@ V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B
 | T8  | x      | sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`                         | V3,V27 |
 | T9  | x      | drop `~` wait-state ref @ root README.md:72 (root README excluded from §T.6 scope)                | V0,V15 |
 | T10 | x      | drop "defined ∈ §I" claim @ CLAUDE.md:31 — `/release` repo-local, ⊥ published                     | V2     |
+| T11 | .      | sweep `.claude/commands/release.md` stale §V cites → align w/ current SPEC.md (V19→V7, V5→V6, V8→V9, V7→V8 confirm-gate) | V28    |
 
 ## §B BUGS
 
@@ -91,3 +93,4 @@ V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B
 | B2  | 2026-05-06 | V3 violations: pinned numerics @ pilot-spec/{commands/explain,skills/{check,glyph},README}, pilot-core/skills/steno    | V27 |
 | B3  | 2026-05-06 | §B.1 derivative-leak class: §T.6 scoped to pilot-spec/{...,README}, root README.md:72 excluded ∴ `~` ref persisted     | V26 |
 | B4  | 2026-05-06 | derivative free-text drift sub-class: CLAUDE.md:31 claimed `/release ∈ §I`, but only `/gh:release` published ∴ V2 leak | V2  |
+| B5  | 2026-05-06 | V0+V1 prepend shifted §V numbers; .claude/commands/release.md cites (V5,V8,V19,V7-as-confirm-gate) ⊥ re-synced ∴ stale; /sdd:check ⊥ audited cite resolution ∴ drift hidden | V28 |
