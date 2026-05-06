@@ -12,7 +12,7 @@ description: |
 
 Audience: the LLM reading SPEC.md back into context. SPEC.md = LLM-facing artifact — ∀ reads/writes via Claude. humans operate through /sdd:* cmds, ⊥ hand-edit; /sdd:explain decodes glyph → prose ∀ human consumption. ∴ math glyphs ∧ fragments = features ⊥ bugs — model parses them cheaply, compression aggression earns its keep on every re-load.
 
-"Math-glyph" ≠ "glyph". Generic glyphs are any printable symbols (status markers `.` `~` `x`, typographic dots, bullets). Math-glyphs are the specific math operators below (∀ ∃ ∴ ≡ ⊥ ¬ ∈ ∉ ≤ ≥ ≠ → ∧ ∨ §) — that's what makes this encoding compress so hard, and why a separate `steno` skill exists for human-facing text where math-glyphs would slow reviewers down.
+"Math-glyph" ≠ "glyph". Generic glyphs are any printable symbols (status markers `.` `x`, typographic dots, bullets). Math-glyphs are the specific math operators below (∀ ∃ ∴ ≡ ⊥ ¬ ∈ ∉ ≤ ≥ ≠ → ∧ ∨ §) — that's what makes this encoding compress so hard, and why a separate `steno` skill exists for human-facing text where math-glyphs would slow reviewers down.
 
 Applies to SPEC.md writes, spec-referencing prose, backprop entries.
 Does NOT apply to code, error strings, commit messages, PR descriptions, or anything a human reviewer reads on GitHub (use the `core:steno` skill for that).
@@ -147,7 +147,7 @@ id|status|task|cites
 T3|x|add auth mw|V1,I.api
 ```
 
-Status: `x` done, `.` todo, `~` paused (cross-session WIP authored via `/sdd:spec amend §T`; ⊥ build-time in-flight marker). Escape literal `|` as `\|`.
+Status: `x` done, `.` todo. Escape literal `|` as `\|`.
 
 **Interface**:
 

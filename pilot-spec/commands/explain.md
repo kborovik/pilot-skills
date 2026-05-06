@@ -17,7 +17,7 @@ SPEC.md = LLM-facing artifact — ∀ reads/writes via Claude. humans operate th
 2. Parse `$ARGUMENTS`:
    - `§T.n` / `§V.n` / `§B.n` / `§I.<key>` → that row
    - `§G` / `§C` → that section in full
-   - `--next` or empty → lowest-numbered §T row with status `.` or `~`
+   - `--next` or empty → lowest-numbered §T row with status `.`
 3. If citation absent → list valid ids in target section. Stop.
 
 ## EXPAND
@@ -74,7 +74,7 @@ Every `/sdd:explain` response terminates with a `## Next` block, optionally prec
 - Each item = atomic action description (one sentence ∨ phrase). ⊥ `Reply <token>` prefix, ⊥ leading dispatch label (`Reply`, `Run`). Dispatch: user types `run <integer>` → execute item at index; cross-skill jumps via `run /<plugin>:<cmd> [args]` (discriminator: 1st arg digit vs `/`).
 - **Actionable only.** Each item ! describe a real state transition. `/sdd:explain` is read-only ∧ holds no wait-state — items are slash-cmd follow-ups (`/sdd:build`, `/sdd:check`, another `/sdd:explain`). N=1 is legal when only one follow-up is sensible.
 - No raw file:line edit refs. No §-ref imperatives. No compound items. No prose mid-list. No next-step directives outside the block.
-- Items must be applicable to current state. Suggest `/sdd:build §T.n` only when the cited row's status is `.` or `~`. Closed rows (status `x`) → suggest `/sdd:explain --next` to read the next pending row, or `/sdd:check --all` to audit.
+- Items must be applicable to current state. Suggest `/sdd:build §T.n` only when the cited row's status is `.`. Closed rows (status `x`) → suggest `/sdd:explain --next` to read the next pending row, or `/sdd:check --all` to audit.
 
 ### Hint block (optional)
 

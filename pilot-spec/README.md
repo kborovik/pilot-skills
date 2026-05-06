@@ -104,7 +104,7 @@ Then in any repo:
 ```
 
 - **`SPEC.md` is the only spec file.** No `docs/` tree, no JSON sidecars.
-- **`/sdd:spec` is the only writer.** `/sdd:build` may flip a task status cell (`.` → `~` → `x`); everything else routes through `/sdd:spec`.
+- **`/sdd:spec` is the only writer.** `/sdd:build` may flip a task status cell (`.` → `x`); everything else routes through `/sdd:spec`.
 - **`/sdd:check` writes nothing.** It reports drift and suggests remedies.
 - **`/sdd:explain` writes nothing.** It expands a math-glyph citation into prose for humans.
 
@@ -154,7 +154,7 @@ B1|2026-04-20|token `<` not `≤`|V2
 B2|2026-04-21|race on write|V3
 ```
 
-**Status glyphs in §T:** `.` todo · `~` wip · `x` done.
+**Status glyphs in §T:** `.` todo · `x` done.
 **Cell rules:** literal `|` → escape as `\|`. Empty cell = `-`. Backticks OK.
 
 ## Commands
@@ -184,18 +184,18 @@ Native single-thread plan → execute → verify loop. No sub-agents.
 | arg form | scope                                      |
 | -------- | ------------------------------------------ |
 | `§T.n`   | implement that one task                    |
-| `--next` | lowest-numbered row with status `.` or `~` |
+| `--next` | lowest-numbered row with status `.`        |
 | `--all`  | every `.` row in §T order                  |
 | (empty)  | same as `--all`                            |
 
 Loop per task:
 
 1. **PLAN** — cite every §V / §I the task touches. If a gap is found ("no §V applies", "§I silent on shape X"), pause and ask the user to route it back to `/sdd:spec`. Plan never invents rules.
-2. **EDIT** — flip status `.` → `~`, make the change, run tests / build.
+2. **EDIT** — make the change, run tests / build.
 3. **VERIFY** — on failure, classify:
    - **(a) code bug** → fix and re-run.
    - **(b) spec wrong** or **(c) unspecified edge case** → invoke `backprop` (via `/sdd:spec <cause>` — gate classifies as BACKPROP), let it append `§B` and usually a new `§V`, resume against the updated spec.
-4. **CLOSE** — flip `~` → `x` only when verification is green.
+4. **CLOSE** — flip `.` → `x` only when verification is green.
 
 `/sdd:build` never silently retries. Every failure is either fixed or specced.
 
@@ -294,7 +294,7 @@ surfaces in three places:
    (a) code bug — fix, no spec change; (b) spec wrong; (c) unspecified edge case →
    invoke `backprop`, let it append §B and usually a new §V, resume against updated
    spec. No silent retries.
-3. **Write-policy fence.** `/sdd:build` only flips §T status (`.` → `~` → `x`). All
+3. **Write-policy fence.** `/sdd:build` only flips §T status (`.` → `x`). All
    other `SPEC.md` edits go through `/sdd:spec`. Build cannot resolve ambiguity by
    quietly redefining the rules.
 
@@ -303,7 +303,7 @@ to the spec layer, either pre-execute via the plan gate or post-failure via back
 
 ## Math-glyph encoding
 
-The `glyph` skill writes **math-glyph encoding** — a compression scheme built around math operators (∀ ∃ ∴ ⊥ ∈ ∉ ≤ ≥ ≠ ∧ ∨ → §) plus fragments and pipe tables. "Math-glyph" is the precise term: generic glyphs are any printable symbols (the §T status markers `.` `~` `x`, bullets, dingbats); the encoding here specifically leans on math-glyphs because they carry truth-conditional meaning in one character.
+The `glyph` skill writes **math-glyph encoding** — a compression scheme built around math operators (∀ ∃ ∴ ⊥ ∈ ∉ ≤ ≥ ≠ ∧ ∨ → §) plus fragments and pipe tables. "Math-glyph" is the precise term: generic glyphs are any printable symbols (the §T status markers `.` `x`, bullets, dingbats); the encoding here specifically leans on math-glyphs because they carry truth-conditional meaning in one character.
 
 Result: every spec write lands at roughly a quarter of its prose length while staying machine- and human-readable. The companion `steno` skill (`core` plugin, invoked from `gh` cmds) handles GitHub-facing text and deliberately omits math-glyphs so reviewers don't slow down.
 

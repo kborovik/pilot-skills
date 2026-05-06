@@ -53,9 +53,8 @@ For each I item:
 For each T<n>:
 
 1. If `x`: verify claimed work present.
-2. If `~`: note as in-progress.
-3. If `.`: note as pending.
-4. Flag `x` rows with no evidence as **STALE**.
+2. If `.`: note as pending.
+3. Flag `x` rows with no evidence as **STALE**.
 
 ## REPORT
 
@@ -97,7 +96,7 @@ Every check response terminates with a `## Next` block, optionally preceded by a
 - Each item = atomic action description (one sentence ∨ phrase). ⊥ `Reply <token>` prefix, ⊥ leading dispatch label. Dispatch: user types `run <integer>` → execute item at index; cross-skill jumps via `run /<plugin>:<cmd> [args]`.
 - **Actionable only.** Each item ! describe a real state transition. check is read-only ∧ holds no wait-state — items are slash-cmd follow-ups (`/sdd:spec bug: ...`, `/sdd:spec amend ...`, `/sdd:build §T.n`, `/sdd:check --all`). N=1 is legal when only one follow-up is sensible.
 - No raw file:line edit refs. No §-ref imperatives. No compound items. No prose mid-list. No next-step directives outside the block (REMEDY HINTS table above is internal scaffolding).
-- Items must be applicable to current state. Before suggesting `/sdd:build --next`, confirm ≥ 1 §T row has status `.` or `~`. If §T fully closed (all `x`) and audit is clean, suggest state-seeding cmds (`/sdd:spec` to add a row, `/sdd:spec bug: ...` to backprop) instead.
+- Items must be applicable to current state. Before suggesting `/sdd:build --next`, confirm ≥ 1 §T row has status `.`. If §T fully closed (all `x`) and audit is clean, suggest state-seeding cmds (`/sdd:spec` to add a row, `/sdd:spec bug: ...` to backprop) instead.
 
 ### Hint block (optional)
 

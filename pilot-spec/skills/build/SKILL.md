@@ -23,7 +23,7 @@ SPEC.md = LLM-facing artifact — ∀ reads/writes via Claude. humans operate th
 1. Read `SPEC.md`. If missing → tell user to invoke the spec skill first. Stop.
 2. Parse invocation args:
    - `§T.n` → that task only
-   - `--next` → lowest-numbered row with status `.` or `~`
+   - `--next` → lowest-numbered row with status `.`
    - `--all` or empty → every `.` row in §T order
    - `--fast` → opt-in fast-path (skip PLAN gate when scope ≤ threshold ∧ wording mechanical); ignored under `--all`
    - `--plan` → force full PLAN-then-wait even when fast-path would auto-fire
@@ -59,14 +59,12 @@ Show plan. Wait for user OK unless auto mode.
 
 ## EXECUTE
 
-Per task in order (status flips `.` → `x` direct; ⊥ intermediate `~` write):
+Per task in order (status flips `.` → `x` direct):
 
 1. Edit code per plan.
 2. Run verification command.
 3. **Pass** → flip §T.n status `.` → `x`; auto-commit. Next task.
 4. **Fail** → invoke backprop skill. Do NOT retry blindly. Status stays `.`.
-
-`~` reserved for explicit "paused mid-task" wait-state authored via `/sdd:spec amend §T` (cross-session WIP — phased scope), ⊥ the default in-flight marker.
 
 ## FAIL → BACKPROP
 
@@ -104,7 +102,7 @@ Every build response terminates with a `## Next` block, optionally preceded by a
 - Each item = atomic action description (one sentence ∨ phrase). ⊥ `Reply <token>` prefix, ⊥ leading dispatch label. Dispatch: user types `run <integer>` → execute item at index; cross-skill jumps via `run /<plugin>:<cmd> [args]`.
 - **Actionable only.** Each item ! describe a real state transition. PLAN waits on user → execute / revise / abort bind to items by position. EXECUTE-pass auto-commits → ⊥ commit item; Next leads w/ /sdd:check ∨ /sdd:build --next ∨ /sdd:spec follow-ups. After backlog cleared, omit ceremonial items — suggest `/sdd:spec` to seed instead.
 - No raw file:line edit refs. No §-ref imperatives. No compound items. No prose mid-list. No next-step directives outside the block.
-- Items must be applicable to current state. After EXECUTE pass, before suggesting `/sdd:build --next`, confirm ≥ 1 remaining §T row with status `.` or `~`. If backlog cleared, suggest `/sdd:spec` (seed) instead.
+- Items must be applicable to current state. After EXECUTE pass, before suggesting `/sdd:build --next`, confirm ≥ 1 remaining §T row with status `.`. If backlog cleared, suggest `/sdd:spec` (seed) instead.
 
 ### Hint block (optional)
 
