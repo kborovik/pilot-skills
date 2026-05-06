@@ -62,7 +62,7 @@ the next agent breaks the same thing again.
 A spec is the cheapest way to make a long-running project agent-coherent:
 
 - **Persistent context.** Re-read at the start of each command. Survives `/clear`.
-- **Addressable.** `§V.3` is a citation. Code, tests, and commit messages can point at it. Reviewers don't have to guess what changed.
+- **Addressable.** `§V.<n>` is a citation. Code, tests, and commit messages can point at it. Reviewers don't have to guess what changed.
 - **Testable invariants.** `§V` rows are written so a failing test maps 1-to-1 to a violated invariant.
 - **Bug memory.** `§B` table makes it impossible to forget that a class of bug already happened. Backprop usually adds the invariant and test that would have caught it.
 
@@ -136,22 +136,22 @@ external surface — what the world sees.
 ## §V INVARIANTS
 
 numbered. testable. each ! MUST hold.
-V1: ∀ req → auth check before handler
-V2: token expiry ≤ ⊥ allowed
-V3: DB write ! in transaction
+V<n>: ∀ req → auth check before handler
+V<n>: token expiry ≤ ⊥ allowed
+V<n>: DB write ! in transaction
 
 ## §T TASKS
 
 id|status|task|cites
-T1|.|scaffold repo|-
-T2|.|impl §I.api POST /x|V2
-T3|x|add §V.1 middleware|V1,I.api
+T<n>|.|scaffold repo|-
+T<n>|.|impl §I.api POST /x|V<n>
+T<n>|x|add §V.<n> middleware|V<n>,I.api
 
 ## §B BUGS
 
 id|date|cause|fix
-B1|2026-04-20|token `<` not `≤`|V2
-B2|2026-04-21|race on write|V3
+B<n>|2026-04-20|token `<` not `≤`|V<n>
+B<n>|2026-04-21|race on write|V<n>
 ```
 
 **Status glyphs in §T:** `.` todo · `x` done.
@@ -173,7 +173,7 @@ Examples (all free-form intent — gate classifies):
 ```bash
 /sdd:spec a CLI that ingests JSON over stdin and emits Parquet
 /sdd:spec build the spec from this codebase
-/sdd:spec V2's `≤` should be `<` for unsigned tokens
+/sdd:spec V<n>'s `≤` should be `<` for unsigned tokens
 /sdd:spec rate-limiter dropped requests under 100rps
 ```
 
@@ -219,9 +219,9 @@ runs them itself.
 The inverse of the `glyph` skill (which writes math-glyph encoding). Given any citation, returns plain English with cited context.
 
 ```bash
-/sdd:explain §V.3      # expand invariant 3
-/sdd:explain §T.7      # expand task 7 + every §V/§I it cites
-/sdd:explain §B.2      # expand bug 2 + the invariant that catches recurrence
+/sdd:explain §V.<n>    # expand a specific invariant
+/sdd:explain §T.<n>    # expand a task + every §V/§I it cites
+/sdd:explain §B.<n>    # expand a bug + the invariant that catches recurrence
 /sdd:explain --next    # expand the next unfinished task
 ```
 
@@ -252,8 +252,8 @@ inside `/sdd:build`.
 ```bash
 /sdd:spec build a static-site generator that converts a Markdown directory into a single-page HTML bundle
 # review §G/§C/§I/§V in SPEC.md, amend if needed
-/sdd:build --next   # plan, implement, verify T1 (scaffold)
-/sdd:build --next   # T2 (renderer)
+/sdd:build --next   # plan, implement, verify T<n> (scaffold)
+/sdd:build --next   # T<n> (renderer)
 /sdd:check          # before opening a PR
 ```
 
@@ -262,8 +262,8 @@ inside `/sdd:build`.
 ```bash
 /sdd:spec build the spec from this codebase   # gate routes to DISTILL
 /sdd:check                     # see what already drifts from the distilled spec
-/sdd:spec V2's bound is too loose for the rate-limiter   # gate routes to AMEND
-/sdd:build §T.3                # tackle a specific task
+/sdd:spec V<n>'s bound is too loose for the rate-limiter   # gate routes to AMEND
+/sdd:build §T.<n>              # tackle a specific task
 ```
 
 ### A bug just hit production
@@ -279,7 +279,7 @@ inside `/sdd:build`.
 
 ```bash
 /sdd:check --all
-/sdd:explain §V.4              # if a violation is unclear, decompress it
+/sdd:explain §V.<n>            # if a violation is unclear, decompress it
 ```
 
 ## Ambiguity policy
@@ -338,7 +338,7 @@ Symbol set:
 
 **Good** (math-glyph):
 
-> V1: ∀ req → auth check before handler
+> V<n>: ∀ req → auth check before handler
 
 **Bad** (prose bug note):
 
@@ -346,9 +346,9 @@ Symbol set:
 
 **Good** (math-glyph):
 
-> B1: token `<` not `≤` ∴ tokens rejected @ expiry. §V.2 now ! `≤`.
+> B<n>: token `<` not `≤` ∴ tokens rejected @ expiry. §V.<n> now ! `≤`.
 
-If math-glyphs slow you down on review, `/sdd:explain §V.1` decompresses on demand.
+If math-glyphs slow you down on review, `/sdd:explain §V.<n>` decompresses on demand.
 
 ## Backprop in detail
 

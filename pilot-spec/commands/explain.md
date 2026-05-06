@@ -37,15 +37,15 @@ For the chosen citation:
 ## OUTPUT SHAPE
 
 ```
-## §T.3 — add auth middleware
+## §T.<n> — add auth middleware
 
-> T3|.|add auth mw|V1,I.api
+> T<n>|.|add auth mw|V<n>,I.api
 
 In plain English: this task adds an authentication middleware that runs before
 every request reaches its handler.
 
 Cited invariants:
-- §V.1 — every request must pass an auth check before the handler runs.
+- §V.<n> — every request must pass an auth check before the handler runs.
 
 Cited interfaces:
 - §I.api — POST /x returns 200 with {id:string}; the middleware must not
@@ -53,16 +53,16 @@ Cited interfaces:
 
 Status: not started (`.`).
 
-Bottom line: implement a middleware that enforces §V.1 without altering §I.api.
+Bottom line: implement a middleware that enforces §V.<n> without altering §I.api.
 
 ## Hint
 
-§T.3 is pending — typical next step is item 1 to start work, or item 2 if you want to read the cited invariant first.
+§T.<n> is pending — typical next step is item 1 to start work, or item 2 if you want to read the cited invariant first.
 
 ## Next
 
-1. /sdd:build §T.3 — start implementation
-2. /sdd:explain §V.1 — read the cited invariant in prose
+1. /sdd:build §T.<n> — start implementation
+2. /sdd:explain §V.<n> — read the cited invariant in prose
 ```
 
 ## OUTPUT — "Next" block
@@ -86,15 +86,15 @@ Every `/sdd:explain` response terminates with a `## Next` block, optionally prec
 Example for a closed §T row (terminal state):
 
 ```
-## §T.3 — add auth middleware
+## §T.<n> — add auth middleware
 
-> T3|x|add auth mw|V1,I.api
+> T<n>|x|add auth mw|V<n>,I.api
 
 In plain English: this task added an authentication middleware...
 
 Status: complete (`x`).
 
-Bottom line: §V.1 is enforced by the middleware shipped under §T.3.
+Bottom line: §V.<n> is enforced by the middleware shipped under §T.<n>.
 
 ## Hint
 

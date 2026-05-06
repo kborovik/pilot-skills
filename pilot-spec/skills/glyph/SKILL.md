@@ -103,7 +103,7 @@ Canonical action-verb vocab ∀ math-glyph artifacts. Use canonical form; ⊥ us
 | canonical | meaning                                             | avoid                             |
 | --------- | --------------------------------------------------- | --------------------------------- |
 | `set`     | assign value to a field                             | assign, configure                 |
-| `mark`    | transition state field to known value (`mark T3 x`) | tag (when stateful), flag         |
+| `mark`    | transition state field to known value (`mark T<n> x`) | tag (when stateful), flag       |
 | `flag`    | raise attention / categorize as violation           | warn, alert, note                 |
 | `open`    | create new tracked entity w/ initial status         | start, begin, file (when opening) |
 | `close`   | transition entity to terminal state                 | finish, complete, resolve         |
@@ -129,22 +129,22 @@ Never compress:
 
 ```
 V<n>: <subject> <relation> <condition>
-V1: ∀ req → auth check before handler
-V2: token expiry ≤ current_time → reject
+V<n>: ∀ req → auth check before handler
+V<n>: token expiry ≤ current_time → reject
 ```
 
 **Bug row** (pipe table under §B):
 
 ```
 id|date|cause|fix
-B1|2026-04-20|token `<` not `≤`|V2
+B<n>|2026-04-20|token `<` not `≤`|V<n>
 ```
 
 **Task row** (pipe table under §T):
 
 ```
 id|status|task|cites
-T3|x|add auth mw|V1,I.api
+T<n>|x|add auth mw|V<n>,I.api
 ```
 
 Status: `x` done, `.` todo. Escape literal `|` as `\|`.
@@ -160,7 +160,7 @@ env: FOO_KEY ! set
 
 ## ADDRESSING
 
-`§<S>.<n>` ≡ section.item ref. `§V.2` ≡ invariants §, item 2. Cmd args, commits, PRs cite by § → zero ambiguity.
+`§<S>.<n>` ≡ section.item ref (e.g. `§V.<n>` ≡ invariants §, item n). Cmd args, commits, PRs cite by § → zero ambiguity.
 
 ## ONE FILE RULE
 
@@ -174,7 +174,7 @@ Big project → more §s, ⊥ more files. grep ceremony kills agent speed. SPEC.
 
 **Good**:
 
-> V1: ∀ req → auth check before handler
+> V<n>: ∀ req → auth check before handler
 
 **Bad**:
 
@@ -182,7 +182,7 @@ Big project → more §s, ⊥ more files. grep ceremony kills agent speed. SPEC.
 
 **Good**:
 
-> B1: token `<` not `≤` → reject @ expiry boundary.
+> B<n>: token `<` not `≤` → reject @ expiry boundary.
 
 **Bad**:
 

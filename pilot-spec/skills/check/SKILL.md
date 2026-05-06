@@ -62,15 +62,15 @@ Math-glyph. Grouped by severity.
 
 ```
 ## §V drift
-V2 VIOLATE: auth/mw.go:47 uses `<` not `≤`. see §B.1.
-V5 UNVERIFIABLE: no test covers ∀ req path.
+V<n> VIOLATE: auth/mw.go:47 uses `<` not `≤`. see §B.<n>.
+V<n> UNVERIFIABLE: no test covers ∀ req path.
 
 ## §I drift
 I.api DRIFT: POST /x returns `{result}` not `{id}`. route.go:112.
 I.cmd MISSING: `foo bar` absent from cli/*.go.
 
 ## §T drift
-T3 STALE: status `x`, no middleware file exists.
+T<n> STALE: status `x`, no middleware file exists.
 
 ## summary
 2 violate. 1 missing. 1 stale. 1 unverifiable.
@@ -117,11 +117,11 @@ Example after drift found:
 
 ## Hint
 
-VIOLATE outranks DRIFT — record the V2 breach via item 1 before fixing the interface drift, so §B captures the cause not just the symptom.
+VIOLATE outranks DRIFT — record the V<n> breach via item 1 before fixing the interface drift, so §B captures the cause not just the symptom.
 
 ## Next
 
-1. /sdd:spec bug: V2 violation at auth/mw.go — record the drift
+1. /sdd:spec bug: V<n> violation at auth/mw.go — record the drift
 2. /sdd:spec bug: I.api DRIFT at route.go — record interface drift
 ```
 

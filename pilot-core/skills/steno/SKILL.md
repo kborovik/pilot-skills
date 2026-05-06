@@ -51,7 +51,7 @@ Safe for GitHub readers:
 ≤   at most
 ≥   at least
 ≠   not equal
-§   spec citation (e.g. `§V.3`, `§T.11`) — only for refs into SPEC.md
+§   spec citation (e.g. `§V.<n>`, `§T.<n>`) — only for refs into SPEC.md
 ```
 
 Avoid (use words):
