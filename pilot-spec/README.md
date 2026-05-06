@@ -457,4 +457,4 @@ skills/backprop/           bug → spec protocol (six steps)
 For the original project, history, and `v3.1.0` (the full Hunt lifecycle with
 sub-agents, parallel workers, and design-system enforcement), see the upstream repo.
 
-MIT. See [`LICENSE`](./LICENSE).
+MIT. See repo-root [`LICENSE`](../LICENSE).

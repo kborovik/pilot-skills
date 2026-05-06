@@ -104,4 +104,4 @@ The `sdd` plugin (directory `pilot-spec/`) is adapted from [**JuliusBrussee/cave
 
 ## License
 
-MIT. See [`LICENSE`](./LICENSE). The `pilot-spec/` plugin carries an additional dual-copyright notice ([`pilot-spec/LICENSE`](./pilot-spec/LICENSE)) acknowledging upstream cavekit.
+MIT. See [`LICENSE`](./LICENSE). Upstream cavekit attribution: [`pilot-spec/README.md`](./pilot-spec/README.md#attribution--license).
