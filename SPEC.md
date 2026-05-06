@@ -39,7 +39,7 @@ V0: SPEC.md ≡ LLM-operated artifact (first principle). humans observe → /sdd
 V1: SPEC.md @ repo root ≡ sole spec file ∧ sole source of truth; `/sdd:spec` ≡ sole mutator — ⊥ hand-edit, ⊥ docs/ tree, ⊥ JSON sidecars.
 V2: ∀ published plugin (sdd, gh, core) ! project-agnostic; repo-specific recipes ∈ `.claude/` — ⊥ leak repo-local paths ∨ rules into `<plugin>/`.
 V3: published skill (`<plugin>/skills/**`) ∧ cmd (`<plugin>/commands/**`) ∧ plugin README bodies ⊥ cite SPEC §-numbers (§V.N, §T.N, §B.N) — shared artifacts travel between repos w/o pinned numerics. `.claude/**` ∧ `CLAUDE.md` ∧ `SPEC.md` MAY cite (project-local).
-V4: SPEC.md ∧ spec-adjacent writes ! glyph encoding — math operators (∀ ∃ ∴ ≡ ⊥ ¬ ≤ ≥ ≠ ∈ ∉ ∧ ∨ → §), fragments, pipe tables.
+V4: SPEC.md ∧ spec-adjacent writes ! glyph encoding — math operators (∀ ∃ ∴ ≡ ⊥ ¬ ≤ ≥ ≠ ∈ ∉ ∧ ∨ → §), fragments, compact pipe tables (⊥ alignment padding, ⊥ separator row — bare `|cell|cell|` form per glyph SHAPES).
 V5: GitHub-facing artifacts (issue title∧body, PR title∧body, PR squash/merge commit body, release commit body, gh-skill comments) ! steno encoding — readable symbols (→ & | §-cites), ⊥ heavy math glyphs (∀ ∃ ∴ ⊥ ∈ ∉). steno ⊥ apply to Conventional Commits title prefix `type(area):`, code, error strings.
 V6: plugin name ≠ dir name — resolve plugin → dir via `.claude-plugin/marketplace.json` `plugins[].source`; ⊥ hardcode dir paths in cmd ∨ skill bodies.
 V7: monorepo release via repo-local `/release [--all|<plugin>] [bump|x.y.z]`; published `/gh:release` ≡ single-package only ∧ bails on monorepo by design.
@@ -72,25 +72,24 @@ V28: ∀ pinned §-cite (`§V.N`, `§T.N`, `§B.N` ∨ bare `V.N`/`T.N`/`B.N`) �
 
 ## §T TASKS
 
-| id  | status | task                                                                                              | cites  |
-| --- | ------ | ------------------------------------------------------------------------------------------------- | ------ |
-| T1  | x      | distill initial SPEC.md from current repo state                                                   | -      |
-| T2  | x      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)      | V3     |
-| T4  | x      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                            | V1,V23 |
-| T5  | x      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
-| T6  | x      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
-| T7  | x      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
-| T8  | x      | sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`                         | V3,V27 |
-| T9  | x      | drop `~` wait-state ref @ root README.md:72 (root README excluded from §T.6 scope)                | V0,V15 |
-| T10 | x      | drop "defined ∈ §I" claim @ CLAUDE.md:31 — `/release` repo-local, ⊥ published                     | V2     |
-| T11 | .      | sweep `.claude/commands/release.md` stale §V cites → align w/ current SPEC.md (V19→V7, V5→V6, V8→V9, V7→V8 confirm-gate) | V28    |
+id|status|task|cites
+T1|x|distill initial SPEC.md from current repo state|-
+T2|x|strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)|V3
+T4|x|refresh `CLAUDE.md` §V cites to point at fresh numbers|V1,V23
+T5|x|run `/sdd:check --all` after T2..T4 → catch residual drift|V17
+T6|x|drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}|V0,V15
+T7|x|wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md|V26
+T8|x|sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`|V3,V27
+T9|x|drop `~` wait-state ref @ root README.md:72 (root README excluded from §T.6 scope)|V0,V15
+T10|x|drop "defined ∈ §I" claim @ CLAUDE.md:31 — `/release` repo-local, ⊥ published|V2
+T11|.|sweep `.claude/commands/release.md` stale §V cites → align w/ current SPEC.md (V19→V7, V5→V6, V8→V9, V7→V8 confirm-gate)|V28
+T12|.|extend glyph SKILL.md GRAMMAR w/ compact pipe-table rule (⊥ alignment padding, ⊥ separator row)|V4
 
 ## §B BUGS
 
-| id  | date       | cause                                                                                                                 | fix |
-| --- | ---------- | --------------------------------------------------------------------------------------------------------------------- | --- |
-| B1  | 2026-05-06 | V0+V15 amend left `~` refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}; derivative ⊥ propagated | V26 |
-| B2  | 2026-05-06 | V3 violations: pinned numerics @ pilot-spec/{commands/explain,skills/{check,glyph},README}, pilot-core/skills/steno    | V27 |
-| B3  | 2026-05-06 | §B.1 derivative-leak class: §T.6 scoped to pilot-spec/{...,README}, root README.md:72 excluded ∴ `~` ref persisted     | V26 |
-| B4  | 2026-05-06 | derivative free-text drift sub-class: CLAUDE.md:31 claimed `/release ∈ §I`, but only `/gh:release` published ∴ V2 leak | V2  |
-| B5  | 2026-05-06 | V0+V1 prepend shifted §V numbers; .claude/commands/release.md cites (V5,V8,V19,V7-as-confirm-gate) ⊥ re-synced ∴ stale; /sdd:check ⊥ audited cite resolution ∴ drift hidden | V28 |
+id|date|cause|fix
+B1|2026-05-06|V0+V15 amend left `~` refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}; derivative ⊥ propagated|V26
+B2|2026-05-06|V3 violations: pinned numerics @ pilot-spec/{commands/explain,skills/{check,glyph},README}, pilot-core/skills/steno|V27
+B3|2026-05-06|§B.1 derivative-leak class: §T.6 scoped to pilot-spec/{...,README}, root README.md:72 excluded ∴ `~` ref persisted|V26
+B4|2026-05-06|derivative free-text drift sub-class: CLAUDE.md:31 claimed `/release ∈ §I`, but only `/gh:release` published ∴ V2 leak|V2
+B5|2026-05-06|V0+V1 prepend shifted §V numbers; .claude/commands/release.md cites (V5,V8,V19,V7-as-confirm-gate) ⊥ re-synced ∴ stale; /sdd:check ⊥ audited cite resolution ∴ drift hidden|V28
