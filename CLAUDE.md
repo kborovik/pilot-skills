@@ -28,7 +28,7 @@ Spec writes use `glyph` skill (math-glyph); GitHub-facing text uses `steno` skil
 
 ⊥ bypass `/sdd:build` ∀ non-trivial changes — dogfooding ≡ the point.
 
-Monorepo release: `/release [--all|<plugin>] [bump]` defined ∈ §I per §V.7.
+Monorepo release: `/release [--all|<plugin>] [bump]` (repo-local, `.claude/`) per §V.7.
 
 ## Adding things
 
