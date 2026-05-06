@@ -74,9 +74,9 @@ V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B
 | id  | status | task                                                                                              | cites  |
 | --- | ------ | ------------------------------------------------------------------------------------------------- | ------ |
 | T1  | x      | distill initial SPEC.md from current repo state                                                   | -      |
-| T2  | .      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)      | V3     |
+| T2  | x      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)      | V3     |
 | T4  | x      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                            | V1,V23 |
-| T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
+| T5  | x      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
 | T6  | x      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
 | T7  | x      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
 | T8  | x      | sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`                         | V3,V27 |
