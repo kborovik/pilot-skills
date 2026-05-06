@@ -26,6 +26,7 @@ Does NOT apply to code, error strings, commit messages, PR descriptions, or anyt
 - No hedging (skip "might", "perhaps", "could be worth").
 - Fragments fine.
 - Short synonyms per `## VERBS` (canonical verbs + `avoid` column).
+- Pipe tables compact: ⊥ alignment padding, ⊥ separator row. Header row + data rows, bare `|cell|cell|` (escape literal `|` as `\|`).
 
 ## SYMBOLS
 

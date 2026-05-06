@@ -83,7 +83,7 @@ T8|x|sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/*
 T9|x|drop `~` wait-state ref @ root README.md:72 (root README excluded from §T.6 scope)|V0,V15
 T10|x|drop "defined ∈ §I" claim @ CLAUDE.md:31 — `/release` repo-local, ⊥ published|V2
 T11|.|sweep `.claude/commands/release.md` stale §V cites → align w/ current SPEC.md (V19→V7, V5→V6, V8→V9, V7→V8 confirm-gate)|V28
-T12|.|extend glyph SKILL.md GRAMMAR w/ compact pipe-table rule (⊥ alignment padding, ⊥ separator row)|V4
+T12|x|extend glyph SKILL.md GRAMMAR w/ compact pipe-table rule (⊥ alignment padding, ⊥ separator row)|V4
 
 ## §B BUGS
 
