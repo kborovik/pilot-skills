@@ -75,7 +75,6 @@ V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B
 | --- | ------ | ------------------------------------------------------------------------------------------------- | ------ |
 | T1  | x      | distill initial SPEC.md from current repo state                                                   | -      |
 | T2  | .      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)      | V3     |
-| T3  | .      | re-author `.claude/commands/check-v{17,31,38}.md` against current §V numbering (rename ∨ rewrite) | V3,V13 |
 | T4  | .      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                            | V1,V23 |
 | T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
 | T6  | .      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
