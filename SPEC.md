@@ -66,6 +66,7 @@ V22: `core` plugin ⊥ commands — ships skills only (`socratic`, `steno`); con
 V23: §V ∧ §T ∧ §B numbering monotonic — ⊥ reuse N across history.
 V24: SPEC.md > 500 lines → compact §B (drop oldest bugs) before splitting — one-file rule preserved.
 V25: glyph encoding preserves verbatim — code blocks, paths, URLs, identifiers, numbers, versions, error strings, SQL, regex, JSON, YAML, quoted strings.
+V26: `/sdd:spec` post-apply ! auto-fire `/sdd:check --all`; surface drift → user before further `/sdd:*` invocations. ⊥ silent commit-then-done.
 
 ## §T TASKS
 
@@ -76,8 +77,11 @@ V25: glyph encoding preserves verbatim — code blocks, paths, URLs, identifiers
 | T3  | .      | re-author `.claude/commands/check-v{17,31,38}.md` against current §V numbering (rename ∨ rewrite) | V3,V13 |
 | T4  | .      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                            | V1,V23 |
 | T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
+| T6  | .      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
+| T7  | .      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
 
 ## §B BUGS
 
-| id  | date | cause | fix |
-| --- | ---- | ----- | --- |
+| id  | date       | cause                                                                                                                 | fix |
+| --- | ---------- | --------------------------------------------------------------------------------------------------------------------- | --- |
+| B1  | 2026-05-06 | V0+V15 amend left `~` refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}; derivative ⊥ propagated | V26 |
