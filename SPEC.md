@@ -13,12 +13,6 @@ multi-plugin Claude Code marketplace `pilot-skills` → ships `sdd` (spec-driven
 
 ## §I INTERFACES
 
-### Manifests
-
-- `.claude-plugin/marketplace.json` → `{name, description, owner, plugins[]}`; ∀ plugin row carries `{name, description, source, category}`.
-- `<plugin>/.claude-plugin/plugin.json` → `{name, description, version, author, dependencies?}`.
-- current: `sdd` v1.5.1 deps `[core]`, `gh` v1.3.1 deps `[core]`, `core` v1.0.1 ⊥ deps.
-
 ### Published cmds
 
 - `/sdd:spec <free-form intent>` → SPEC.md mutator (sole writer); gate routes to {NEW, DISTILL, BACKPROP, AMEND}.
@@ -31,11 +25,6 @@ multi-plugin Claude Code marketplace `pilot-skills` → ships `sdd` (spec-driven
 - `/gh:commit [hint]` → commit staged w/ Conventional Commits.
 - `/gh:merge [PR#]` → squash-merge w/ release-note body.
 - `/gh:release [bump|x.y.z]` → single-package SemVer bump + annotated tag; bails on monorepo.
-
-### Repo-local cmds
-
-- `/release [--all|<plugin>] [bump|x.y.z]` → monorepo release orchestrator.
-- `/check-v17`, `/check-v31`, `/check-v38` → executable invariant enforcers (names pre-existing; rebind to current §V via §T.3).
 
 ### Published skills
 
@@ -80,13 +69,13 @@ V25: glyph encoding preserves verbatim — code blocks, paths, URLs, identifiers
 
 ## §T TASKS
 
-| id  | status | task                                                                                                    | cites  |
-| --- | ------ | ------------------------------------------------------------------------------------------------------- | ------ |
-| T1  | x      | distill initial SPEC.md from current repo state                                                         | -      |
-| T2  | .      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)            | V3     |
-| T3  | .      | re-author `.claude/commands/check-v{17,31,38}.md` against current §V numbering (rename ∨ rewrite)       | V3,V13 |
-| T4  | .      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                                  | V1,V23 |
-| T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                              | V17    |
+| id  | status | task                                                                                              | cites  |
+| --- | ------ | ------------------------------------------------------------------------------------------------- | ------ |
+| T1  | x      | distill initial SPEC.md from current repo state                                                   | -      |
+| T2  | .      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)      | V3     |
+| T3  | .      | re-author `.claude/commands/check-v{17,31,38}.md` against current §V numbering (rename ∨ rewrite) | V3,V13 |
+| T4  | .      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                            | V1,V23 |
+| T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                        | V17    |
 
 ## §B BUGS
 
