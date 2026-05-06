@@ -69,7 +69,7 @@ Single `SPEC.md` at repo root. Math-glyph-encoded sections (math operators ∀ �
 ```
 
 - **`SPEC.md` is the only spec file.** No `docs/` tree, no JSON sidecars.
-- **`/sdd:spec` is the only writer.** `/sdd:build` may flip a task status cell (`.` → `~` → `x`); everything else routes through `/sdd:spec`.
+- **`/sdd:spec` is the only writer.** `/sdd:build` may flip a task status cell (`.` → `x`); everything else routes through `/sdd:spec`.
 - **`/sdd:check` writes nothing.** It reports drift and suggests remedies.
 - **`/sdd:explain` writes nothing.** It expands a math-glyph citation into prose for humans.
 

@@ -80,7 +80,7 @@ V27: published-body examples ! placeholder cite form (`§V.<n>`, `§T.<n>`, `§B
 | T6  | x      | drop `~` wait-state refs ∈ pilot-spec/{skills/{build,check,glyph},commands/explain,README}        | V0,V15 |
 | T7  | x      | wire post-apply `/sdd:check --all` auto-fire into pilot-spec/skills/spec/SKILL.md                 | V26    |
 | T8  | x      | sweep pinned numerics → placeholder form ∀ V3 violations in `<plugin>/**`                         | V3,V27 |
-| T9  | .      | drop `~` wait-state ref @ root README.md:72 (root README excluded from §T.6 scope)                | V0,V15 |
+| T9  | x      | drop `~` wait-state ref @ root README.md:72 (root README excluded from §T.6 scope)                | V0,V15 |
 
 ## §B BUGS
 
