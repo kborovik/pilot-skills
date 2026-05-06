@@ -46,6 +46,7 @@ multi-plugin Claude Code marketplace `pilot-skills` → ships `sdd` (spec-driven
 
 ## §V INVARIANTS
 
+V0: SPEC.md ≡ LLM-operated artifact (first principle). humans observe → /sdd:explain, mutate → /sdd:spec; ⊥ hand-edit. ∀ other §V derive from V0; affordances solely for human ergonomics (e.g. mid-task wait-state status) ⊥ added.
 V1: SPEC.md @ repo root ≡ sole spec file ∧ sole source of truth; `/sdd:spec` ≡ sole mutator — ⊥ hand-edit, ⊥ docs/ tree, ⊥ JSON sidecars.
 V2: ∀ published plugin (sdd, gh, core) ! project-agnostic; repo-specific recipes ∈ `.claude/` — ⊥ leak repo-local paths ∨ rules into `<plugin>/`.
 V3: published skill (`<plugin>/skills/**`) ∧ cmd (`<plugin>/commands/**`) ∧ plugin README bodies ⊥ cite SPEC §-numbers (§V.N, §T.N, §B.N) — shared artifacts travel between repos w/o pinned numerics. `.claude/**` ∧ `CLAUDE.md` ∧ `SPEC.md` MAY cite (project-local).
@@ -65,7 +66,7 @@ V11: per-plugin commit collection ≡ dir-scope ∪ subject-scope, deduped by SH
 V12: push policy — single-plugin path: emit manual push instructions (`git push origin main && git push origin <plugin>-v<x.y.z>`). `--all` path: auto-push `origin main` + every newly-cut tag after loop (covered by §V.8 bulk-confirm).
 V13: tooling preference — `jq` ∀ `marketplace.json` parse w/ `python3` fallback when jq absent; `rg --pcre2` ∀ regex requiring `\b` word-boundary. ⊥ macOS BSD `awk` for `\b` patterns — silent no-op (rule has bitten this repo before).
 V14: `/sdd:build` ⊥ silent retry — verify fail → classify {(a) code bug → fix; (b) spec wrong ∨ (c) unspec edge → invoke backprop skill, append §B + usually new §V, resume against updated spec}.
-V15: `/sdd:build` may flip §T status cell only (`.` → `~` → `x`); ∀ other SPEC.md edits → `/sdd:spec`.
+V15: `/sdd:build` may flip §T status cell only (`.` → `x`); ∀ other SPEC.md edits → `/sdd:spec`.
 V16: backprop fires automatically on `/sdd:build` verify fail ∧ `/sdd:check` VIOLATE w/ root cause; user trigger via `/sdd:spec <bug intent>` (gate routes to BACKPROP). ∀ bug → §B row appended; §V invariant optional but preferred when bug class has recurrence risk.
 V17: `/sdd:check` ∧ `/sdd:explain` ⊥ writes — read-only diagnostics; suggest remedies via `/sdd:spec` ∨ `/sdd:build`, ⊥ invoke them.
 V18: `/gh:issue` ∧ `/sdd:spec` always-gated by `core:socratic` — concrete first-turn input passes gate ≤ 1 turn; vague → single-Q dialogue until convergence triple satisfied; ⊥ `--quick`, ⊥ bypass flag.
@@ -82,7 +83,7 @@ V25: glyph encoding preserves verbatim — code blocks, paths, URLs, identifiers
 | id  | status | task                                                                                                    | cites  |
 | --- | ------ | ------------------------------------------------------------------------------------------------------- | ------ |
 | T1  | x      | distill initial SPEC.md from current repo state                                                         | -      |
-| T2  | ~      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)            | V3     |
+| T2  | .      | strip repo-coupled SPEC §-cites from `<plugin>/**` bodies (pilot-plan/README.md V23 cleared)            | V3     |
 | T3  | .      | re-author `.claude/commands/check-v{17,31,38}.md` against current §V numbering (rename ∨ rewrite)       | V3,V13 |
 | T4  | .      | refresh `CLAUDE.md` §V cites to point at fresh numbers                                                  | V1,V23 |
 | T5  | .      | run `/sdd:check --all` after T2..T4 → catch residual drift                                              | V17    |
