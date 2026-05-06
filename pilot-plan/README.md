@@ -21,7 +21,7 @@
    - [`/gh:release`](#ghrelease--cut-a-semver-release)
 4. [Skills](#skills)
 5. [`steno` — GitHub-facing shorthand](#steno--github-facing-shorthand)
-6. [The socratic gate (V23)](#the-socratic-gate-v23)
+6. [The socratic gate](#the-socratic-gate)
 7. [Design vs issue](#design-vs-issue)
 8. [Non-goals](#non-goals)
 9. [Files](#files)
@@ -67,7 +67,7 @@ Distinct from `/gh:issue`: socratic converges on **enough** (sharpen vague inten
 
 ### `/gh:issue` — file an issue (gated)
 
-Two-phase. Phase 1 runs the **socratic** gate per V23. Phase 2 calls `gh issue create`.
+Two-phase. Phase 1 runs the **socratic** gate (always-on, no bypass). Phase 2 calls `gh issue create`.
 
 | convergence criterion          | what counts                                                          |
 | ------------------------------ | -------------------------------------------------------------------- |
@@ -155,7 +155,7 @@ Every artifact PilotPlan creates on GitHub uses **steno** encoding: drop article
 
 Steno lives in the [`core` plugin](../pilot-core/skills/steno) and is invoked from `gh` cmds via `core:steno`. Distinct from the `glyph` skill in the [`sdd` plugin](../pilot-spec/skills/glyph). `glyph` writes math-glyph encoding for `SPEC.md` — the LLM is the audience. `steno` writes shorthand for human reviewers on GitHub. The two are deliberately not merged.
 
-## The socratic gate (V23)
+## The socratic gate
 
 `/gh:issue` is **always-gated**. The rationale:
 

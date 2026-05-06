@@ -1,7 +1,7 @@
 {
   "name": "sdd",
   "description": "PilotSpec — compressed spec-driven development. Four commands (/sdd:spec, /sdd:build, /sdd:check, /sdd:explain) over one SPEC.md. Math-glyph encoding (~75% token cut vs prose).",
-  "version": "1.5.1",
+  "version": "1.0.0",
   "author": { "name": "Konstantin Borovik", "email": "github@lab5.ca" },
   "dependencies": ["core"]
 }
